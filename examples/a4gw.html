@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>A4</title>
+
+  <!-- Normalize or reset CSS with your favorite library -->
+  
+
+  <!-- Load paper.css for happy printing -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
+
+  <!-- Set page size here: A5, A4 or A3 -->
+  <!-- Set also "landscape" if you need -->
+  <style>@page { size: A4 }</style>
+  <style>
+	.myTabel{
+		border: 1px solid black;
+		border-collapse: collapse;
+		
+	}
+	td{	
+		padding: 1px;
+		font-family: Calibri, Helvetica, Arial, sans-serif;
+		border-bottom: 1px solid #000;
+	}
+	body{
+		font-size: 13.2px !important;
+		font-weight: lighter !important;
+	}
+	
+	
+	
+	h1 {font-family: Calibri, Helvetica, Arial, sans-serif;}
+	p {font-family: Calibri, Helvetica, Arial, sans-serif;}
+ 
+  </style>
+</head>
+
+<!-- Set "A5", "A4" or "A3" for class name -->
+<!-- Set also "landscape" if you need -->
+<body class="A4">
+
+  <!-- Each sheet element should have the class "sheet" -->
+  <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+  <section class="sheet padding-10mm">
+
+    <!-- Write HTML just like a web page -->
+    <article> <p><b>PT. PRASETIA DWIDHARMA</b></p>
+
+	<div class="row" style="margin-left:65%; margin-top:-2em">
+	<table style="width:90%;" class="myTabel" >
+		<tr class="myTabel">
+			<td class="myTabel">No. Dokumen	</td>
+			<td >: F/HR-GA-PD/12</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">No. Revisi	</td>
+			<td >: 04</td>
+		</tr>
+	</table>
+	</div>
+	<br><br>
+	<div style=" margin-top:-3.5em; width:100%; font-size:1em"><center><h1><u>SURAT TUGAS PERJALANAN DINAS</u></h1></center></div>
+	<div style=" margin-top:-1em; width:100%"><p><center>(Untuk KEBERANGKATAN dan KEPULANGAN)</center></p></div>
+	
+	<?php
+		$query = mysql_query("select * from laporan_jalan inner join tbl_karyawan_all2 on tbl_karyawan_all2.noreg=laporan_jalan.noreg where nosurat='$nosurat'");
+		while($row=mysql_fetch_array($query)){
+	?>
+	
+	<table style="margin-left:12.5em; margin-top:-1.5em; width:50%;">
+		<tr>
+			<td align="center">No: <?php echo $row['nosurat'];?></td>
+		</tr>
+	</table>
+	<p>Surat Tugas ini diberikan kepada :</p>
+	<table  width="100%" style="margin-top:-0.5em" class="myTabel">
+	
+			<tr class="myTabel">
+				<td class="myTabel"><b>No Reg</b></td>
+				<td class="myTabel">45654646466464564</td>
+				<td colspan="4" class="myTabel">
+				<center><font color="black"><b>Keperluan</b>	(Harap dirinci tugas yang akan dilakukan)</td>
+			</tr>
+
+			<tr class="myTabel">
+				<td class="myTabel"><b>Nama</b></td>
+				<td class="myTabel">ffgdsgdsgdsgsgsgdsgdsgs</td>
+				<td class="myTabel"><b>No.</b></td>
+				<td class="myTabel"><b>Nama SITE</b></td>
+				<td class="myTabel"><b>Progress</b></td>
+				<td class="myTabel"><b>Keperluan</b></td>
+			</tr>
+
+			<tr class="myTabel">
+				<td class="myTabel"><b>Jabatan</b></td>
+				<td class="myTabel">sfgdsgfdsgfdsgsgsgsgdsg</td>
+				<td width="5%" class="myTabel"></td>
+				<td class="myTabel">dasfafasfasdfasf</td>
+				<td width="15%" class="myTabel">adsfasfasfasfsaf</td>
+				<td rowspan="4" align="center" width="20%" class="myTabel">adfasfasfasdfasdf</td>
+			</tr>
+
+			<tr class="myTabel">
+				<td class="myTabel"><b>Departemen</b></td>
+				<td class="myTabel"><?php echo $row['departemen'];?></td>
+				<td class="myTabel"></td>
+				<td class="myTabel"></td>
+				<td class="myTabel"></td>
+			</tr>
+
+			<tr class="myTabel">
+				<td class="myTabel"><b>Seksi</b></td>
+				<td class="myTabel"><?php echo $row['seksi'];?></td>
+				<td class="myTabel"></td>
+				<td class="myTabel"></td>
+				<td class="myTabel"></td>
+			</tr>
+			<tr class="myTabel">
+				<td class="myTabel"><b>Dari-Tujuan</b></td>
+				<td class="myTabel"><?php echo $row['site'];?></td>
+				<td class="myTabel"></td>
+				<td class="myTabel"></td>
+				<td class="myTabel"></td>
+			</tr>
+			<tr class="myTabel">
+				<td colspan="9" align="right" >
+				<font color="black" ><b>bila kolom Nama Site dan Progres Proyek, tidak cukup, mohon dibuat pada lembar lain dan dilampirkan</b></td>
+			</tr>
+			<tr class="myTabel">
+				<td colspan="9" align="right" >
+				<font color="black" ><b>Lebih dari 3 (tiga) hari dan Perpanjangan, WAJIB melampirkan Timeline kepergian</b></td>
+			</tr>
+	</table>
+	<table class="myTabel" width="100%">
+		<tr class="myTabel">
+			<td class="myTabel"><b>Berangkat</b></td>
+			<td class="myTabel">Hari/Tanggal: <?php 
+					$berangkat = $row['berangkat'];
+					$tglberangkat = date('d-m-Y', strtotime($berangkat));
+					echo $tglberangkat ;?></td>
+			<td class="myTabel"><b>Kembali</b></td>
+			<td>Hari/Tanggal: <?php 
+								$kembali = $row['kembali'];
+								$tglkembali = date('d-m-Y', strtotime($kembali));
+								echo $tglkembali ;
+								?></td>
+		</tr>
+	</table>
+	<table class="myTabel" width="100%" style="auto;">
+		<tr class="myTabel">
+			<td rowspan="2" class="myTabel">
+			<div style="word-wrap: break-word;"><center><font color="black"><b>JABATAN/PANGKAT</b></div></td>
+			<td colspan="4" class="myTabel">
+			<center><font color="black"><b>TUNJANGAN HARIAN</b></td></td>
+			<td rowspan="2" width="10px" class="myTabel">
+			<center><font color="black"><b>JML HARI PENUGASAN</b></td>
+			<td rowspan="2" width="25px" class="myTabel">
+			<center><font color="black"><b>KETERANGAN</b></td>
+		</tr>
+		
+		<tr>
+			<td class="myTabel"><b>TRANSPORT</b></td>
+			<td class="myTabel"><b>HOTEL</b></td>
+			<td class="myTabel"><b>UANG SAKU</b></td>
+			<td class="myTabel"><b>UANG MAKAN</b></td>
+		</tr>
+		<?php
+			if ($row['jabatan'] == "DIREKTUR"){	$dir = $row['lamapergi'];}
+			else if ($row['jabatan'] == "DEPUTY DIREKTUR"){ $depdir = $row['lamapergi'];}
+			else if ($row['jabatan'] == "KONSELOR/PSIKOLOG"){ $konpsi = $row['lamapergi'];}
+			else if ($row['jabatan'] == "GEN. MANAGER"){ $genmgr = $row['lamapergi'];}
+			else if ($row['jabatan'] == "AST. GEN. MANAGER"){ $astgenmgr = $row['lamapergi'];}
+			else if ($row['jabatan'] == "MANAGER"){ $mgr = $row['lamapergi'];}
+			else if ($row['jabatan'] == "DEPARTMENT HEAD"){ $dh = $row['lamapergi'];}
+			else if ($row['jabatan'] == "AST. MANAGER"){ $astmgr = $row['lamapergi'];}
+			else if ($row['jabatan'] == "SUPERVISOR"){ $supervisor = $row['lamapergi'];}
+			else if ($row['jabatan'] == "SENIOR PO"){ $senpo = $row['lamapergi'];}
+			else if ($row['jabatan'] == "SECTION HEAD ") { $sechead = $row['lamapergi'];}
+			else if ($row['jabatan'] == "AST. SUPERVISOR"){ $astsupervisor = $row['lamapergi'];}
+			else if ($row['jabatan'] == "PROYEK OFFICER"){ $po = $row['lamapergi'];}
+			else if ($row['jabatan'] == "STAFF"){ $staff = $row['lamapergi'];}
+		?>
+
+		<tr class="myTabel">
+			<td class="myTabel">- Direktur</td>
+			<td rowspan="14" class="myTabel" width="30px" align="center" class="paragraph">dibayar berdasarkan biaya sesungguhnya atas dasar kwitansi</td>
+			<td rowspan="5" align="center" class="myTabel">500.000</td>
+			<td rowspan="2" align="center" class="myTabel">50.000</td>
+			<td class="myTabel"><center>125.000</td>
+			<td width="10px" align="right" class="myTabel"><?php echo @$dir ?> hari</td>
+			<td rowspan="14" width="255px" align="left" ><p>(1)TRANSPORT, Penggantian untuk biaya:<br> -Pesawat <br>-AirportTax<br> -Taxi <br>-Sewa Mobil/Motor</p><p>(2)HOTEL, Merupakan nilai maksimal yang diberikan perusahaan untuk Tunjangan Hotel</p><p>(3)UANG SAKU dan UANG MAKAN, LKPD uang saku dan uang makan tidak perlu dilampirkan Bukti Pembayaran</p></td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Deputy Direktur</td>
+			<td class="myTabel"><center>120.000</td>
+			<td align="right" class="myTabel"><?php echo @$depdir ?> hari</td>
+		</tr>		
+		<tr class="myTabel"> 
+			<td class="myTabel">- Konselor/Psikolog</td>
+			<td rowspan="3" align="center" class="myTabel">40.000</td>
+			<td rowspan="2" align="center" class="myTabel">115.000</td>
+			<td align="right" class="myTabel"><?php echo @$konpsi ?> hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Gen. Manager</td>
+			<td align="right" class="myTabel"><?php echo @$genmgr ?> hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Ast. Gen. Manager</td>
+			<td class="myTabel"><center>110.000</td>
+			<td align="right" class="myTabel"><?php echo @$astgenmgr?>  hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Manager</td>
+			<td rowspan="7" class="myTabel" align="center">425.000</td>
+			<td rowspan="3" align="center" class="myTabel">35.000</td>
+			<td rowspan="3" align="center" class="myTabel">105.000</td>
+			<td align="right" class="myTabel"><?php echo @$mgr ?> hari</td>
+		</tr>	
+		<tr class="myTabel">
+			<td class="myTabel">- Departemen Head</td>
+			<td align="right" class="myTabel"><?php echo @$dh ?> hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Ast. Manager</td>
+			<td align="right" class="myTabel"><?php echo @$astmgr ?> hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Supervisor</td>
+			<td rowspan="4" align="center" class="myTabel">30.000</td>
+			<td rowspan="4" align="center" class="myTabel">100.000</td>
+			<td align="right" class="myTabel"><?php echo @$supervisor ?> hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Senior PO</td>
+			<td align="right" class="myTabel"><?php echo @$senpo ?>  hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Section Head</td>
+			<td align="right" class="myTabel"><?php echo @$sechead ?> hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Ast. Supervisor</td>
+			<td align="right" class="myTabel"><?php echo @$astsupervisor ?> hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Proyek Officer</td>
+			<td rowspan="2" align="center" class="myTabel">350.000</td>
+			<td rowspan="2" align="center" class="myTabel">25.000</td>
+			<td rowspan="2" align="center" class="myTabel">90.000</td>
+			<td align="right" class="myTabel"><?php echo @$po ?> hari</td>
+		</tr>
+		<tr class="myTabel">
+			<td class="myTabel">- Staff</td>
+			<td align="right" class="myTabel"><?php echo @$staff ?> hari</td>
+		</tr>
+	</table>
+	<div class="row" style="margin-left:-0em; margin-top:0.7em">
+		<table  height="50%" width="40%" class="myTabel">
+			<tr class="myTabel">		
+				<td colspan="2" class="myTabel">
+				<center><font color="black"><b>ESTIMASI BIAYA</b></td>
+				<td rowspan="7" class="myTabel">
+				<div style="word-wrap: break-word;"><center><font color="black">wajib segera menyelesaikan proses administrasi di HR-GA Departemen setelah tugas selesai/kembali ke-jakarta selambat-lambatnya 5 hari</div></td>		
+			</tr>
+			
+			<tr class="myTabel">
+				<td class="myTabel"><div style="width:80px">Transportasi</div></td>
+				<td class="myTabel"><div style="word-wrap: break-word; width: 75px"><?php $pengali = $row['lamapergi'];
+					$transport = $row['uangtransportasi'];
+					$totaltransport = $transport;
+					echo "Rp ".number_format($totaltransport,0,",",".");?></div></td>
+			</tr>
+			
+			<tr class="myTabel">
+				<td class="myTabel">Penginapan</td>
+				<td class="myTabel"><?php
+							$penginapan = $row['penginapan'];
+							$lamainap = $row['lamapenginapan'];
+							$totalpenginapan = $penginapan * $lamainap;
+							echo "Rp ".number_format($totalpenginapan,0,",",".");
+							?></td>
+			</tr>
+			
+			<tr class="myTabel">
+				<td class="myTabel">Uang Saku</td>
+				<td class="myTabel"><?php
+						$saku = $row['uangsaku'];
+						$totalsaku = $saku * $pengali;
+						echo "Rp ".number_format($totalsaku,0,",",".");?></td>
+			</tr>
+			
+			<tr class="myTabel">
+				<td class="myTabel">Uang Makan</td>
+				<td class="myTabel"><?php
+							$makan = $row['uangmakan'];
+							$totalmakan = $makan * $pengali;
+							echo "Rp ".number_format($totalmakan,0,",",".");?></td>
+			</tr>
+			
+			<tr class="myTabel">
+				<td colspan="2" class="myTabel"><div style="width: 100px; height:25px"></div></td>
+			</tr>
+			
+			<tr class="myTabel">
+				<td class="myTabel">TOTAL</td>
+				<td class="myTabel"><?php echo "Rp ".number_format($row['total'],0,",",".");?></td>
+			</tr>
+
+			<tr class="myTabel">
+				<td colspan="10" rowspan="10" class="myTabel">
+				<font color="black"><u>Terbilang: <?php echo $row['terbilang']; ?>adsfasdfasfdasfdasdfasdf</u></font></td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="row" style="float:center; margin-top:-13em; margin-left:22.5em">
+		<table  style="width:87%; " class="myTabel">
+			<tr class="myTabel">
+				<td colspan="3" class="myTabel">Jakarta, </td>
+			</tr>
+			<tr class="myTabel">
+				<td colspan="3" class="myTabel">Departemen : </td>
+			</tr>
+			<div style="height:-5px">
+			<tr class="myTabel"> 
+				<td width="30%" class="myTabel">Pelaksana Tugas</td>
+				<td width="30%" class="myTabel">Kepala Bagian</td>
+				<td width="30%" class="myTabel">Direktur</td>
+			</tr>
+			</div>
+			<tr class="myTabel">
+				<td class="myTabel"><div style="height:80px"></div></td>
+				<td class="myTabel"><div style="height:80px"></div></td>
+				<td class="myTabel"><div style="height:80px"></div></td>
+			</tr>
+			
+			<tr class="myTabel">
+				<td class="myTabel" style="font-size:9pt">Nama: <?php echo $row['nama_lengkap'];?> </td>
+				<td class="myTabel"></td><td class="myTabel"></td>
+			</tr>
+			
+			<tr class="myTabel">
+				<td class="myTabel" style="font-size:9pt">No. Reg: <?php echo $row['noreg'];?> </td>
+				<td class="myTabel" style="font-size:9pt">Kepala Seksi</td>
+				<td class="myTabel"></td>
+			</tr>
+		</table>
+	
+	
+		<div class="row" style="margin-top:1em;  margin-left:-0.05em">
+			<table border="1" style="width:200px;" class="myTabel">
+				<tr>
+					<td colspan="3"><center>HRGA Departemen </td>
+				</tr>
+				<tr>
+					<td colspan="3">Tanggal : </td>
+				</tr>
+				<div style="height:-5px">
+				<tr>
+					<td width="50%">Administrasi</td>
+					<td width="50%">Dept. Head</td>
+				</tr>
+				</div>
+				<tr>
+					<td ><div style="height:90px"></div></td>
+					<td ><div style="height:90px"></div></td>
+				</tr>
+				
+				<tr>
+					<td>No. Reg: </td>
+					<td>Kepala Seksi</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="row" style="margin-left:16em; margin-top:-13.6em">
+			<table style="width:150px;" >
+					<tr>
+					<td>Lembar:</td></tr>
+					<tr>
+					<td>1. Putih </td><td> -HRGA Dept</td>
+					</tr>
+					<tr>
+					<td>2. Merah </td><td> -Finance Dept</td>
+					</tr>
+					<tr>
+					<td>3. Kuning </td><td> -Karyawan ybs</td>
+					</tr>
+					<tr>
+					<td>4. Hijau </td><td>  -Dept./Seksi</td>
+					</tr>
+			</table>
+		</div>
+	</div>
+	
+	
+		<table width="90%" style="margin-top:6em; font-size:12px">
+			<tr>
+				<td>*Untuk Staff s/d Ass. Manager persetujuan sampai Dept. Head terkait; Untuk Manager ke atas persetujuan sampai Direktur terkait.</td>
+			</tr>
+		</table></article>
+
+  </section>
+
+</body>
+
+</html>
